@@ -1,0 +1,574 @@
+/* =============================================================================
+   Smart City Traffic & Logistics Analytics - Modern Corporate Stylesheet
+   Author: Senior Data Visualization & Front-End Engineer
+   ============================================================================= */
+
+:root {
+  --bg-primary: #0B0F19;
+  --bg-secondary: #111827;
+  --bg-card: #1F2937;
+  --bg-card-hover: #283548;
+  --border-color: #374151;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --accent-blue: #3B82F6;
+  --accent-cyan: #06B6D4;
+  --accent-amber: #F59E0B;
+  --accent-red: #EF4444;
+  --accent-green: #10B981;
+  --accent-purple: #8B5CF6;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- App Container & Layout --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Top Header Navigation --- */
+.header {
+  background-color: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.85rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+.brand-text h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.brand-text p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.header-badges {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.badge {
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.badge-blue {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.badge-green {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* --- Subnav Tabs Bar --- */
+.tabs-bar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 1.75rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+}
+
+/* --- Main Content Viewport --- */
+.main-content {
+  flex: 1;
+  padding: 1.5rem 1.75rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Section Titles --- */
+.section-header {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-header h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.section-header p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* --- KPI Metric Cards Grid --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.kpi-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: #4B5563;
+}
+
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.kpi-card.blue::before { background-color: var(--accent-blue); }
+.kpi-card.cyan::before { background-color: var(--accent-cyan); }
+.kpi-card.amber::before { background-color: var(--accent-amber); }
+.kpi-card.red::before { background-color: var(--accent-red); }
+.kpi-card.green::before { background-color: var(--accent-green); }
+.kpi-card.purple::before { background-color: var(--accent-purple); }
+
+.kpi-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0.4rem 0 0.2rem 0;
+  font-feature-settings: "tnum";
+}
+
+.kpi-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* --- Charts Grid --- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.chart-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.chart-container {
+  position: relative;
+  flex: 1;
+  min-height: 280px;
+  width: 100%;
+}
+
+/* --- Interactive Map Container --- */
+.map-wrapper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.map-controls {
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(31, 41, 55, 0.8);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.map-btn {
+  background-color: #374151;
+  color: #D1D5DB;
+  border: 1px solid #4B5563;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.map-btn:hover, .map-btn.active {
+  background-color: var(--accent-blue);
+  color: #FFFFFF;
+  border-color: var(--accent-blue);
+}
+
+#leaflet-map {
+  height: 580px;
+  width: 100%;
+  background-color: #1a202c;
+}
+
+/* Leaflet Custom Popup Styling */
+.leaflet-popup-content-wrapper {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: var(--bg-secondary) !important;
+}
+
+.city-popup {
+  padding: 0.35rem;
+}
+
+.city-popup h4 {
+  font-size: 0.95rem;
+  color: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city-popup-stat {
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.city-popup-stat span:first-child {
+  color: var(--text-secondary);
+}
+
+.city-popup-stat span:last-child {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+/* --- Data Explorer & Tables --- */
+.explorer-controls {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.filter-input, .filter-select {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.filter-input:focus, .filter-select:focus {
+  border-color: var(--accent-blue);
+}
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2563EB;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: #6B7280;
+}
+
+.table-wrapper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #2D3748;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.data-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  padding: 0.5rem 0;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* --- Audit Card & Status Pills --- */
+.pill {
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.pill-red { background-color: rgba(239, 68, 68, 0.2); color: #F87171; }
+.pill-orange { background-color: rgba(249, 115, 22, 0.2); color: #FB923C; }
+.pill-yellow { background-color: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+.pill-green { background-color: rgba(16, 185, 129, 0.2); color: #34D399; }
+.pill-blue { background-color: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+
+/* --- Upload Box --- */
+.upload-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  background-color: rgba(17, 24, 39, 0.5);
+  cursor: pointer;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--accent-blue);
+}
+
+/* --- Footer --- */
+.footer {
+  margin-top: auto;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
